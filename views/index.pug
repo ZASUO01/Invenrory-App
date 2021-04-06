@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  div(class='home-image')
+  div(class='view-container p-20 home-info')
+    h1(class="page-title title-2 mb-20") Inventory content
+    div(class='home-info-content')
+      p Games: #{data.game_count}
+      p Copies: #{data.gameinstance_count}
+      p Registered Platforms: #{data.platform_count}
+      p Registered Developers: #{data.fabricant_count}
+  div(class='home-buttons')
+    ul
+        a(href='/games' class="btn-large") All Games
+        a(href='/platforms' class="btn-large") By Platform
+        a(href='/fabricants' class="btn-large") By Developer

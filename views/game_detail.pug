@@ -1,0 +1,29 @@
+extends layout
+
+block content
+    div(class='view-container p-100')
+        button(class="back btn-medium" onclick="goBack()") Back
+        div(class='game-detail-box')
+            a(href=`/games/${game._id}/update` class="edit-game btn-little") Edit
+            a(href=`/games/${game._id}/delete` class="delete-game btn-little") Delete
+            div(class='game-detail-image' style=`background-image: url(${game.image})`)
+            div(class='game-detail-info')
+                h1(class="page-title title-2 al") #{game.name}
+                div(class='game-detail-links')
+                    a(href=fabricant.url class="btn-detail") #{fabricant.name}
+                    a(href=platform.url class="btn-detail") #{platform.name}
+                p  #{game.description}
+        div(class='game-instances')
+            div(class='copies-head')
+                h1(class="page-title title-2") Copies in Inventory
+                a(class='add btn-small' href='/copies/'+game._id+'/create') Add new
+            each copy in game_instances
+                div(class='copy-box')
+                    div(class='copy-main')
+                        p #{game.name}
+                        p Media: #{copy.media}
+                        p Status: #{copy.status}
+                    div(class='copy-buttons')
+                        a(href=`/copies/${copy.id}/update` class="btn-little") Edit
+                        a(href=`/copies/${copy.id}/delete` class="btn-little") Delete
+                        

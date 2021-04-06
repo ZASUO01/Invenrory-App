@@ -1,0 +1,18 @@
+extends layout 
+
+block content 
+    div(class="view-container p-60")
+        button(class="back btn-medium" onclick="goBack()") Back
+        div(class="reference-list-head mt-40")
+            h1(class="page-title title-2") All platforms
+            a(class="add btn-small" href="/platforms/create") Add new
+        div(class="reference-list-area")
+            - platforms.sort(function(a, b){let textA = a.name.toUpperCase();  let textB = b.name.toUpperCase();  return (textA < textB) ? -1 : (textA > textB) ? 1 : 0; })
+            each platform in platforms
+                    div(class='reference-box')
+                        div(class='single-box-1')
+                            p #{platform.name}
+                            a(class="btn-medium" href="/platforms/"+platform._id) View Games
+                        div(class='single-box-2')
+                            a(class="btn-little" href=`/platforms/${platform._id}/update`) Edit
+                            a(class="btn-little" href=`/platforms/${platform._id}/delete`) Delete 

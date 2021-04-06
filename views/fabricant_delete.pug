@@ -1,0 +1,17 @@
+extends layout
+block content
+    div(class="view-container p-60 fabricant-delete")
+        button(class="back btn-medium" onclick="goBack()") Back
+        h1(class="page-title title-2 mt-40 mb-20") Are you sure want to delete #{fabricant.name} ?
+        if errors
+            ul(class="error-ul")
+                for error in errors
+                    if lError
+                        li(class="error-li") !! #{error.message}
+                    else
+                        li(class="error-li") !! #{error.msg}
+        form(action='' method='POST' class="operation-form")
+            div(class="input-block")
+                label(for="password") Admin Password 
+                input(type="password" name="password" required="true") 
+            input(type="submit" value='Delete' class="btn-form")

@@ -1,0 +1,189 @@
+/* GAME LIST */
+.game-list-head{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.game-list-grid{
+    width: 90%;
+    margin-top: 60px;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    row-gap: 60px;
+}
+
+.game-list-grid .game-box{
+    width: 220px;
+    height: 340px;
+    justify-self: center;
+    background-color: #454545;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.game-box .game-image{
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+}
+
+.game-box .game-info{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+    text-align: center;
+    height: calc(100% - 200px); 
+}
+
+.game-info p{
+    color: white;
+    font-size: 17px;
+    font-weight: 300;
+    margin-bottom: 10px;
+}
+
+
+
+/* GAME DETAIL */
+.game-detail-box{
+    max-width: 1000px;
+    width: 90%;
+    overflow: hidden;
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+}
+
+.game-detail-box .edit-game, .game-detail-box .delete-game{
+    position: absolute;
+    top: 10px;
+}
+
+.game-detail-box .edit-game{
+    left: 10px;
+}
+
+.game-detail-box .delete-game{
+    right: 10px;
+}
+
+.game-detail-box .game-detail-image{
+    width: 100%;
+    height: 400px;
+    background-position: center;
+    background-size: cover;
+}
+
+.game-detail-box .game-detail-info{
+    width: 100%;
+    padding: 20px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.game-detail-info .game-detail-links{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.game-detail-info h1{
+    margin-bottom: 10px;
+}
+
+.game-detail-info p{
+    color: white;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+
+
+
+@media screen and (min-width:560px){
+    .game-list-grid .game-box{
+        width: 260px;
+        height: 380px;
+    }
+    .game-box .game-image{
+        height: 230px;
+    }
+    .game-box .game-info{
+        height: calc(100% - 230px);
+    }
+    .game-info p{
+        font-size: 21px;
+    }
+    .game-detail-box .edit-game{
+        left: initial;
+        right: 130px;
+    }
+    .game-detail-box .game-detail-image{
+        height: 450px;
+    }
+    .game-detail-info .game-detail-links{
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .game-detail-info p{
+        font-size: 17px;
+    }
+}
+
+@media screen and (min-width: 820px){
+    .game-list-head{
+        flex-direction: row;
+    }
+    .game-list-grid{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (min-width:960px){
+    .game-list-grid .game-box{
+        width: 300px;
+        height: 400px;
+    }
+    .game-box .game-image{
+        height: 250px;
+    }
+    .game-box .game-info{
+        height: calc(100% - 250px);
+    }
+    .game-detail-box{
+        flex-direction:row;
+    }
+    .game-detail-box .game-detail-image{
+        width: 300px;
+        height: 400px;
+    }
+    .game-detail-box .game-detail-info{
+        width: calc(100% - 300px);
+        height: 400px;
+    }
+    .game-detail-info .game-detail-links{
+        justify-content: flex-start;
+    }
+}
+
+@media screen and (min-width:1100px){
+    .game-list-grid{
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

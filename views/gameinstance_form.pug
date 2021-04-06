@@ -1,0 +1,32 @@
+extends layout
+
+block content
+    div(class='view-container p-60 game-instance-add')
+        button(class="back btn-medium" onclick="goBack()") Back
+        h1(class='page-title title-2 mb-20 mt-40') #{h1}
+        if errors
+            ul(class="error-ul")
+                for error in errors
+                    li(class="error-li") #{error.msg}
+        form(action="" method="post" class="operation-form")
+            div(class='input-block')
+                label(for="name") Game id
+                input(type="text" name='name' value=game._id readonly style='background-color: #aaa;') 
+            div(class='input-block-select')
+                label(for="media") Media
+                select(name="media")
+                    option(value="CD" selected=(edit&& (copy.media.toString() === 'CD' ? 'selected' : false))) CD  
+                    option(value="DVD" selected=(edit&& (copy.media.toString() === 'DVD' ? 'selected' : false))) DVD 
+                    option(value="Blue Ray" selected=(edit&& (copy.media.toString() === 'Blue Ray' ? 'selected' : false))) Blue Ray
+                    option(value="Digital" selected=(edit&& (copy.media.toString() === 'Digital' ? 'selected' : false))) Digital
+            div(class='input-block-select')
+                label(for="status") Status
+                select(name="status")
+                    option(value="Sealed" selected=(edit&& (copy.status.toString() === 'Sealed' ? 'selected' : false))) Sealed  
+                    option(value="New" selected=(edit&& (copy.status.toString() === 'New' ? 'selected' : false))) New 
+                    option(value="Used" selected=(edit&& (copy.status.toString() === 'Used' ? 'selected' : false))) Used
+            hr
+            div(class='input-block')
+                label(for="password") Admin Password
+                input(type="password" name="password")
+            input(type="submit" value='Send' class="btn-form") 

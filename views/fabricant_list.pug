@@ -1,0 +1,19 @@
+extends layout
+
+block content
+     div(class="view-container p-60")
+        button(class="back btn-medium" onclick='goBack()') Back
+        div(class="reference-list-head mt-40")
+            h1(class="page-title title-2") All Developers
+            a(class="add btn-small" href="/fabricants/create") Add new
+        div(class="reference-list-area")
+            - fabricants.sort(function(a, b){let textA = a.name.toUpperCase();  let textB = b.name.toUpperCase();  return (textA < textB) ? -1 : (textA > textB) ? 1 : 0; })
+            each fabricant in fabricants
+                    div(class='reference-box')
+                        div(class="single-box-1")
+                            p #{fabricant.name}
+                            p #{fabricant.country}
+                            a(class="btn-medium" href="/fabricants/"+fabricant._id) View Games
+                        div(class="single-box-2")
+                            a(class="btn-little" href=`/fabricants/${fabricant._id}/update`) Edit
+                            a(class="btn-little" href=`/fabricants/${fabricant._id}/delete`) Delete

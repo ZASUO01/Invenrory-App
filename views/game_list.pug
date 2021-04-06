@@ -1,0 +1,17 @@
+extends layout
+
+block content 
+    div(class="view-container p-60")
+        button(class="back btn-medium" onclick="goBack()") Back
+        div(class="game-list-head")
+            h1(class="page-title title-1") #{h1}
+            a(class="add btn-small" href="/games/create") Add new
+        div(class="game-list-grid")
+            each game in game_list
+                div(class="game-box")
+                    div(class='game-image' style=`background-image: url(${game.image})`)
+                    div(class='game-info')
+                        p    #{game.name}
+                        a(href='/games/'+game._id class="btn-medium") View
+                    
+                    

@@ -1,0 +1,28 @@
+extends layout
+
+block content
+    div(class="view-container p-60 fabricant-create")
+        button(class="back btn-medium" onclick="goBack()") Back
+        h1(class="page-title title-2 mt-40 mb-20") #{h1}
+        if errors
+                ul(class="error-ul")
+                    for error in errors
+                        li(class="error-li") !! #{error.msg}
+        form(method="POST" action="" class="operation-form")
+            div(class="input-block")
+                label(for="name") Name
+                if edit
+                    input(type="text" name='name' value=fabricant.name required='true')
+                else  
+                    input(type="text" name='name' placeholder='eg: Naughty Dog' required='true')
+            div(class="input-block")
+                label(for="country") Country
+                if edit
+                    input(type="text" name='country' value=fabricant.country required='true')
+                else  
+                    input(type="text" name='country' placeholder='eg: USA' required='true') 
+            hr
+            div(class="input-block")
+                label(for="password") Admin Password
+                input(type="password" name="password" required='true')
+            input(type="submit" value="Send" class="btn-form") 

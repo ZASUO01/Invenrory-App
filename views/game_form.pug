@@ -1,0 +1,70 @@
+extends layout
+
+block content
+    div(class='view-container p-60 game-create')
+        button(class="back btn-medium" onclick="goBack()") Back
+        h1(class="page-title title-2 mb-20 mt-40") #{h1}
+        if errors
+                ul(class="error-ul")
+                    for error in errors
+                        li(class="error-li") !! #{error.msg}
+        form(method='POST' action='' class="operation-form")
+            div(class="input-block")
+                label(for="name") Title
+                if edit
+                    input(type="text" name='name' value=game.name required='true')
+                else  
+                    input(type="text" name='name' placeholder='eg: Resident Evil' required='true')
+            div(class="input-block")
+                label(for="price") Value
+                if edit
+                    input(type="number" name="price" step="0.01" value=game.price required='true')
+                else
+                    input(type="number" name="price" step="0.01" placeholder='eg: 40,25' required='true')
+            div(class="input-block")
+                label(for="image")  Cover
+                if edit
+                    input(type="text" name="image" value=game.image required='true')
+                else
+                    input(type="text" name="image" placeholder='eg: https://image_example' required='true')
+            div(class="input-block")
+                label(for="description") Description
+                if edit
+                    textarea(name="description" required='true') #{game.description}
+                else
+                    textarea(name="description" required='true')  
+            div(class="input-block-select")
+                label(for="fabricants") Developer
+                select(type="select" name="fabricants" required="true")
+                    - fabricants.sort(function(a, b) {let textA = a.name.toUpperCase();  let textB = b.name.toUpperCase();  return (textA < textB) ? -1 : (textA > textB) ? 1 : 0; });
+                    for fabricant in fabricants
+                        if game
+                            option(
+                                value=fabricant._id 
+                                selected=(
+                                    fabricant._id.toString()===game.fabricant._id.toString()
+                                ) ? 'selected' : false 
+                                ) #{fabricant.name}
+                        else
+                            option(value=fabricant._id) #{fabricant.name}
+            div(class="input-block-select")
+                label(for="platforms") Platform
+                select(type="select" name="platforms" required="true")
+                    for platform in platforms
+                        if game
+                            option(
+                                value=platform._id 
+                                selected=(
+                                    platform._id.toString()===game.platform._id.toString()
+                                ) ? 'selected' : false 
+                                ) #{platform.name} 
+                        else
+                            option(value=platform._id) #{platform.name}   
+            hr
+            div(class="input-block")
+                label(for="password") Admin Password 
+                input(type="password" name="password" required="true") 
+            input(type="submit" value="Send" class="btn-form")
+            
+                
+            
