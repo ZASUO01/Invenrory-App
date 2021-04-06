@@ -5,7 +5,7 @@ const Platform = require('../models/platform');
 const mongoose = require('mongoose');
 const async = require('async');
 const {body, validationResult} = require('express-validator');
-const adminPassword = 'shinventoryapi'
+const adminPassword = process.env.ADMIN_PASSWORD;
 
 exports.gameinstance_create_get = function(req, res, next){
     Game.findById(req.params.id)
